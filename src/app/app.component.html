@@ -1,10 +1,20 @@
-<button (click)="emit('my message', 'mensaje para todos')">
-  <span>Msg Broadcast</span>
-</button>
+<div>
+  <button (click)="emit('my message', 'mensaje para todos')">
+    <span>Msg Broadcast</span>
+  </button>
 
-<button (click)="emit('btn bueno va', 'mensaje solitario')">
-  <span>Msg</span>
-</button>
+  <button (click)="emit('btn lonely message', 'mensaje solitario')">
+    <span>Msg</span>
+  </button>
+</div>
 
+<div>
+  <button color="warning" (click)="connect()">
+    <span>connect</span>
+  </button>
+  <button color="primary" (click)="disconnect()">
+    <span>disconnect</span>
+  </button>
+</div>
 
 <router-outlet></router-outlet>

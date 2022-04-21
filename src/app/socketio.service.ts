@@ -12,17 +12,18 @@ export class SocketioService {
 
   // Método que establece la conexión con el servidor
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT, {
-      // polling falla, websockets funciona
-      // transports: ['websocket'],
-      transports: ['websocket', 'polling'],
-    });
+    this.socket = io(environment.SOCKET_ENDPOINT);
 
     // enviar mensaje al servidor cuando se conecte el cliente
-    this.socket.emit('my message', 'Hello there from Angular.');
+    this.socket.emit('my message', 'Hola desde Angular.');
 
     // escuchar mensaje del servidor
     this.socket.on('my broadcast', (data: string) => {
+      console.log(data);
+    });
+
+    // escuchar mensaje del servidor. función predeterminada
+    this.socket.on('message', (data: any) => {
       console.log(data);
     });
   }
@@ -31,6 +32,13 @@ export class SocketioService {
   disconnect() {
     if (this.socket) {
       this.socket.disconnect();
+    }
+  }
+
+  // Método para abrir la conexión con el servidor
+  connect() {
+    if (this.socket) {
+      this.socket.connect();
     }
   }
 

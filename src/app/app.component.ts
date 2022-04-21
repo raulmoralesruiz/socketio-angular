@@ -26,4 +26,12 @@ export class AppComponent implements OnInit {
   on(eventName: string, callback: (data: any) => void) {
     this.socketService.on(eventName, callback);
   }
+
+  disconnect() {
+    this.socketService.disconnect();
+  }
+
+  connect() {
+    this.socketService.connect();
+  }
 }
